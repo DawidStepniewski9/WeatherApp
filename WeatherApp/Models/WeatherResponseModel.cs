@@ -1,12 +1,14 @@
-﻿namespace WeatherApp.Models
+﻿using Newtonsoft.Json;
+namespace WeatherApp.Models
 {
     public class WeatherResponseModel
     {
-        public Weather Weather { get; set; }
+        public List<Weather> Weather { get; set; }
         public Main Main { get; set; }
         public Wind Wind { get; set; }
     }
 
+    //"weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"},{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],
     public class Weather()
     {
         public int Id { get; set; }
@@ -23,13 +25,10 @@
         public double Temp_max { get; set; }
         public int Pressure { get; set; }
         public int Humidity { get; set; }
-        public int Sea_level { get; set; }
-        public int Grnd_level { get; set; }
     }
     public class Wind()
     {
         public double Speed { get; set; }
         public int Deg {  get; set; }
-        public double Gust { get; set; }
     }
 }

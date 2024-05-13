@@ -18,13 +18,14 @@ namespace WeatherApp.Services
         }
         public async Task<WeatherResponseModel> GetWeatherByCity(string city)
         {
+            var serviceLink = $"{BaseUrl}/weather?q={city}&appid={ApiKey}";
             var weatherLookup = _httpClient.GetAsync(
-                $"{BaseUrl}/weather?q={city}&appid={ApiKey}");
+                serviceLink);
 
-            if(!weatherLookup.IsCompletedSuccessfully)
-            {
-                return null;
-            }
+            //if(!weatherLookup.IsCompletedSuccessfully)
+            //{
+            //    return null;
+            //}
 
             string content = await weatherLookup.Result.Content.ReadAsStringAsync();
             var contentModel = JsonConvert.DeserializeObject<WeatherResponseModel>(content);
